@@ -1,0 +1,17 @@
+pyc文件无法传参解决方案：
+	
+问题如下：在py文件转化为pyc文件时会导致以下问题：
+	1. flow_id 无法显示数据  
+	2. 运行是可能报错 报错如下 :
+RuntimeError: Bad magic number in .pyc file
+ImportError: bad magic number in 'servers.servers.model': b'\x03\xf3\r\n'
+
+
+
+
+测试通过解决方法如下：
+	1.观测源文件  删除所有 _pycache_文件保证标志位的唯一
+	2.观察facade.py 文件   代码开头位置os.path.append(/home/ding/文件名尽量一致)（如当前目录名）
+	3. 修改auto-pyc.py 文件最后压缩文件名一致，正常情况下生成pyc文件原文件会被×替代×
+	4. pyc对路径对标志物非常敏感确保环境的一致性
+
